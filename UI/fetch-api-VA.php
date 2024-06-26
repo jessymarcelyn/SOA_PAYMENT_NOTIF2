@@ -14,7 +14,7 @@ if (isset($_POST['id_pesanan'])) {
     $id_pesanan = htmlspecialchars($_POST['id_pesanan']);
 
     //cek dulu apakah timestamp sudah lebih dari 2 menit
-    $urlcheck = "http://localhost:8000/Tpembayaran/pesanan/{$id_pesanan}";
+    $urlcheck = "http://54.164.221.231:8009/pembayaran/pesanan/{$id_pesanan}";
     $chCheck = curl_init();
 
     curl_setopt($chCheck, CURLOPT_URL, $urlcheck);
@@ -42,9 +42,9 @@ if (isset($_POST['id_pesanan'])) {
                 // }
 
                 if ($bank == 'BCA') {
-                    $GetTime = "http://localhost:8000/transBCA/timestamp/{$id_transaksi}";
+                    $GetTime = "http://54.164.221.231:8009/transBCA/timestamp/{$id_transaksi}";
                 } else if ($bank == 'Mandiri') {
-                    $GetTime = "http://localhost:8000/transMandiri/timestamp/{$id_transaksi}";
+                    $GetTime = "http://54.164.221.231:8009/transMandiri/timestamp/{$id_transaksi}";
                 }
 
                 $chGetTime = curl_init();
@@ -68,9 +68,9 @@ if (isset($_POST['id_pesanan'])) {
                             $pin = htmlspecialchars($_POST['pin']);
 
                             if ($bank == 'BCA') {
-                                $Get1Url = "http://localhost:8000/transBCA/{$id_transaksi}";
+                                $Get1Url = "http://54.164.221.231:8009/transBCA/{$id_transaksi}";
                             } else if ($bank == 'Mandiri') {
-                                $Get1Url = "http://localhost:8000/transMandiri/{$id_transaksi}";
+                                $Get1Url = "http://54.164.221.231:8009/transMandiri/{$id_transaksi}";
                             }
 
                             $chGet1 = curl_init();
@@ -92,9 +92,9 @@ if (isset($_POST['id_pesanan'])) {
                                     } else {
                                         //lanjut ke proses selanjutnya cek pin untuk va nya 
                                         if ($bank == 'BCA') {
-                                            $Get2Url = "http://localhost:8000/BCA/VA/{$va}/pin/{$pin}";
+                                            $Get2Url = "http://54.164.221.231:8009/BCA/VA/{$va}/pin/{$pin}";
                                         } else if ($bank == 'Mandiri') {
-                                            $Get2Url = "http://localhost:8000/Mandiri/VA/{$va}/pin/{$pin}";
+                                            $Get2Url = "http://54.164.221.231:8009/Mandiri/VA/{$va}/pin/{$pin}";
                                         }
 
                                         $chGet2 = curl_init();
@@ -118,9 +118,9 @@ if (isset($_POST['id_pesanan'])) {
 
                                                     #update tras_bca dan update trans_pembayaran
                                                     if ($bank == 'BCA') {
-                                                        $urlPutBank = "http://localhost:8000/transBCA/{$id_transaksi}";
+                                                        $urlPutBank = "http://54.164.221.231:8009/transBCA/{$id_transaksi}";
                                                     } else if ($bank == 'Mandiri') {
-                                                        $urlPutBank = "http://localhost:8000/transMandiri/{$id_transaksi}";
+                                                        $urlPutBank = "http://54.164.221.231:8009/transMandiri/{$id_transaksi}";
                                                     }
 
 
@@ -143,7 +143,7 @@ if (isset($_POST['id_pesanan'])) {
                                                         } else {
                                                             $chPost = curl_init();
 
-                                                            curl_setopt($chPost, CURLOPT_URL, 'http://localhost:8000/notif');
+                                                            curl_setopt($chPost, CURLOPT_URL, 'http://54.164.221.231:8009/notif');
                                                             curl_setopt($chPost, CURLOPT_POST, 1);
                                                             curl_setopt($chPost, CURLOPT_RETURNTRANSFER, true);
                                                             curl_setopt($chPost, CURLOPT_POSTFIELDS, json_encode(array(
@@ -181,7 +181,7 @@ if (isset($_POST['id_pesanan'])) {
 
                                                                     $putNotifDataJson = json_encode($putNotifData);
 
-                                                                    $putNotifurl = "http://localhost:8000/notif/pesanan/{$id_pesanan}";
+                                                                    $putNotifurl = "http://54.164.221.231:8009/notif/pesanan/{$id_pesanan}";
 
                                                                     $chPutNotif = curl_init();
 
@@ -209,7 +209,7 @@ if (isset($_POST['id_pesanan'])) {
                                                                         } else {
                                                                             // echo json_encode($resultGet2);
                                                                             $statusUpdate = 'success';
-                                                                            $putSUrl = "http://localhost:8000/Tpembayaran/pesanan/{$id_pesanan}/status/{$statusUpdate}";
+                                                                            $putSUrl = "http://54.164.221.231:8009/Tpembayaran/pesanan/{$id_pesanan}/status/{$statusUpdate}";
                                                                             $chS = curl_init();
 
                                                                             curl_setopt($chS, CURLOPT_URL, $putSUrl);
@@ -237,7 +237,7 @@ if (isset($_POST['id_pesanan'])) {
 
                                                                                     $putEricDataJson = json_encode($putNoputEricDatatifData);
 
-                                                                                    $urlEric =  "http://localhost:8000/kartu_kredit/transaksi/{$idTrans}/status/failed";
+                                                                                    $urlEric =  "http://52.91.168.106:8009/kartu_kredit/transaksi/{$idTrans}/status/failed";
 
                                                                                     $chEric = curl_init();
                                                                                     // Set cURL options
@@ -288,7 +288,7 @@ if (isset($_POST['id_pesanan'])) {
 
                         $putNotifDataJson = json_encode($putNotifData);
 
-                        $putNotifurl = "http://localhost:8000/notif/pesanan/{$id_pesanan}";
+                        $putNotifurl = "http://54.164.221.231:8009/notif/pesanan/{$id_pesanan}";
 
                         $chPutNotif = curl_init();
 
@@ -318,7 +318,7 @@ if (isset($_POST['id_pesanan'])) {
                                 //ubah status di trans_pembayaran jadi failed
 
                                 $statusUpdate = 'failed';
-                                $putFailedUrl = "http://localhost:8000/Tpembayaran/pesanan/{$id_pesanan}/status/{$statusUpdate}";
+                                $putFailedUrl = "http://54.164.221.231:8009/Tpembayaran/pesanan/{$id_pesanan}/status/{$statusUpdate}";
                                 $chF = curl_init();
 
                                 // Set cURL options for GET request

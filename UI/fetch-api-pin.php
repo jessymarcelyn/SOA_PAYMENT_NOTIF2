@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 
 function update_status_idpesanan($status, $id_pesanan)
 {
-    $putUrl = "http://localhost:8000/Tpembayaran/pesanan/$id_pesanan/status/$status";
+    $putUrl = "http://54.164.221.231:8009/Tpembayaran/pesanan/$id_pesanan/status/$status";
 
     // Initialize cURL session
     $chPut = curl_init();
@@ -37,7 +37,7 @@ function post_notif($id_pesanan)
 {
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL, 'http://localhost:8000/notif');
+    curl_setopt($ch, CURLOPT_URL, 'http://54.164.221.231:8009/notif');
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt(
@@ -73,7 +73,7 @@ function post_notif($id_pesanan)
 
 function getIDTransaksi_NamaPenyedia($id_pesanan)
 {
-    $url = "http://localhost:8000/Tpembayaran/pesanan/" . $id_pesanan;
+    $url = "http://54.164.221.231:8009/Tpembayaran/pesanan/" . $id_pesanan;
 
     // Inisialisasi cURL
     $ch = curl_init();
@@ -176,7 +176,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['pin'])) {
         );
 
         // URL endpoint API
-        $url = "http://localhost:8000/" . $nama_penyedia . "/pembayaran";
+        $url = "http://100.25.221.98:8009/" . $nama_penyedia . "/pembayaran";
 
         $ch = curl_init();
 
@@ -211,7 +211,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['pin'])) {
 
             $putEricDataJson = json_encode($putNoputEricDatatifData);
 
-            $urlEric =  "http://localhost:8000/kartu_kredit/transaksi/{$idTrans}/status/failed";
+            $urlEric =  "http://52.91.168.106:8009/kartu_kredit/transaksi/{$idTrans}/status/failed";
 
             $chEric = curl_init();
             // Set cURL options

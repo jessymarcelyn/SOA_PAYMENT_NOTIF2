@@ -12,7 +12,7 @@ if (isset($_POST['idUser']) && isset($_POST['notifType'])) {
 
 
     // URL endpoint API
-    $url = "http://localhost:8000/notif/user/" . $idUser . "/" . $notifType;
+    $url = "http://54.164.221.231:8009/notif/user/" . $idUser . "/" . $notifType;
 
     // Inisialisasi cURL
     $ch = curl_init();
@@ -90,7 +90,7 @@ if (isset($_POST['idUser']) && isset($_POST['notifType'])) {
     );
 
     // URL endpoint API untuk update notifikasi dengan id_notif tertentu
-    $url = "http://localhost:8000/notif/" . $idNotif;
+    $url = "http://54.164.221.231:8009/notif/" . $idNotif;
 
     // Inisialisasi cURL untuk metode PUT
     $ch = curl_init();

@@ -5,7 +5,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
     $otp = htmlspecialchars($_POST['otp']);
 
     // URL to get the transaction ID
-    $url = "http://localhost:8000/Tpembayaran/pesanan/{$id_pesanan}";
+    $url = "http://54.164.221.231:8009/Tpembayaran/pesanan/{$id_pesanan}";
 
     // Initialize cURL
     $ch = curl_init();
@@ -51,7 +51,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
                 // echo $idTrans;
 
                 // cek attempt dari user udah 3 blm
-                $url = "http://localhost:8000/kartu_kredit/transaksi/{$idTrans}";
+                $url = "http://52.91.168.106:8009/kartu_kredit/transaksi/{$idTrans}";
 
                 // Initialize cURL
                 $ch = curl_init();
@@ -81,7 +81,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
                         if ($resultAttempt[0]['attempt'] < 3) {
 
 
-                            $url = "http://localhost:8000//kartu_kredit/transaksi/{$idTrans}/otp/{$otp}";
+                            $url = "http://52.91.168.106:8009/kartu_kredit/transaksi/{$idTrans}/otp/{$otp}";
 
                             // Initialize cURL
                             $ch = curl_init();
@@ -112,7 +112,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
                                     // update transaksi pembayaran
                                     if ($resultOTP == true) {
 
-                                        $putUrl = "http://localhost:8000/Tpembayaran/pesanan/$id_pesanan/status/success";
+                                        $putUrl = "http://54.164.221.231:8009/Tpembayaran/pesanan/$id_pesanan/status/success";
 
                                         // Initialize cURL session
                                         $chPut = curl_init();
@@ -146,7 +146,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
                                                 // Check if update was successful based on $putResult being true or false
                                                 if ($putResult === true) {
                                                     // echo json_encode(['code' => 200, 'message' => 'Booking status updated successfully']);
-                                                    $putUrl = "http://localhost:8000/kartu_kredit/transaksi/{$idTrans}/status/success";
+                                                    $putUrl = "http://52.91.168.106:8009/kartu_kredit/transaksi/{$idTrans}/status/success";
 
                                                     // Initialize cURL session
                                                     $chPut = curl_init();
@@ -180,7 +180,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
                                                             //POST NOTIFIKASI
                                                             $chPost = curl_init();
 
-                                                            curl_setopt($chPost, CURLOPT_URL, 'http://localhost:8000/notif');
+                                                            curl_setopt($chPost, CURLOPT_URL, 'http://54.164.221.231:8009/notif');
                                                             curl_setopt($chPost, CURLOPT_POST, 1);
                                                             curl_setopt($chPost, CURLOPT_RETURNTRANSFER, true);
                                                             curl_setopt($chPost, CURLOPT_POSTFIELDS, json_encode(array(
@@ -209,7 +209,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
                                                                 $putDataJson = json_encode($putData);
 
                                                                 // URL for the PUT request, assuming localhost and port 8000
-                                                                $putUrl = "http://localhost:8000/notif/pesanan/{$id_pesanan}";
+                                                                $putUrl = "http://54.164.221.231:8009/notif/pesanan/{$id_pesanan}";
 
                                                                 // Initialize cURL session
                                                                 $chPut = curl_init();
@@ -248,7 +248,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
 
                                                                         $putEricDataJson = json_encode($putNoputEricDatatifData);
 
-                                                                        $urlEric =  "http://localhost:8000/kartu_kredit/transaksi/{$idTrans}/status/failed";
+                                                                        $urlEric =  "http://52.91.168.106:8009/kartu_kredit/transaksi/{$idTrans}/status/failed";
 
                                                                         $chEric = curl_init();
                                                                         // Set cURL options
@@ -284,7 +284,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
                                         }
                                     } else {
                                         //tambah attempt karena otp salah
-                                        $putUrl = "http://localhost:8000/kartu_kredit/transaksi/{$idTrans}";
+                                        $putUrl = "http://52.91.168.106:8009/kartu_kredit/transaksi/{$idTrans}";
 
                                         // Initialize cURL session
                                         $chPut = curl_init();
@@ -328,7 +328,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
                                                     $putDataJson = json_encode($putData);
 
                                                     // URL for the PUT request, assuming localhost and port 8000
-                                                    $putUrl = "http://localhost:8000/notif/pesanan/{$id_pesanan}";
+                                                    $putUrl = "http://54.164.221.231:8009/notif/pesanan/{$id_pesanan}";
 
                                                     // Initialize cURL session
                                                     $chPut = curl_init();
@@ -361,7 +361,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
                                                             echo json_encode(['code' => 500, 'message' => 'Error decoding PUT response JSON']);
                                                         } else {
                                                             //update status transaksi jadi failed
-                                                            $putUrl = "http://localhost:8000/Tpembayaran/pesanan/$id_pesanan/status/failed";
+                                                            $putUrl = "http://54.164.221.231:8009/Tpembayaran/pesanan/$id_pesanan/status/failed";
 
                                                             // Initialize cURL session
                                                             $chPut = curl_init();
@@ -393,7 +393,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
                                                                     echo json_encode(['code' => 500, 'message' => 'Error decoding PUT response JSON']);
                                                                 } else {
                                                                     //update stauts transaksi kartu failed
-                                                                    $putUrl = "http://localhost:8000/kartu_kredit/transaksi/{$idTrans}/status/failed";
+                                                                    $putUrl = "http://52.91.168.106:8009/kartu_kredit/transaksi/{$idTrans}/status/failed";
 
                                                                     // Initialize cURL session
                                                                     $chPut = curl_init();
@@ -448,7 +448,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
                             $putDataJson = json_encode($putData);
 
                             // URL for the PUT request, assuming localhost and port 8000
-                            $putUrl = "http://localhost:8000/notif/pesanan/{$id_pesanan}";
+                            $putUrl = "http://54.164.221.231:8009/notif/pesanan/{$id_pesanan}";
 
                             // Initialize cURL session
                             $chPut = curl_init();
@@ -481,7 +481,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
                                     echo json_encode(['code' => 500, 'message' => 'Error decoding PUT response JSON']);
                                 } else {
                                     //update status transaksi jadi failed
-                                    $putUrl = "http://localhost:8000/Tpembayaran/pesanan/$id_pesanan/status/failed";
+                                    $putUrl = "http://54.164.221.231:8009/Tpembayaran/pesanan/$id_pesanan/status/failed";
 
                                     // Initialize cURL session
                                     $chPut = curl_init();
@@ -512,7 +512,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
                                             echo json_encode(['code' => 500, 'message' => 'Error decoding PUT response JSON']);
                                         } else {
                                             //update status transaksi kartu failed
-                                            $putUrl = "http://localhost:8000/kartu_kredit/transaksi/{$idTrans}/status/failed";
+                                            $putUrl = "http://52.91.168.106:8009/kartu_kredit/transaksi/{$idTrans}/status/failed";
 
                                             // Initialize cURL session
                                             $chPut = curl_init();
@@ -564,7 +564,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
                 $putDataJson = json_encode($putData);
 
                 // URL for the PUT request, assuming localhost and port 8000
-                $putUrl = "http://localhost:8000/notif/pesanan/{$id_pesanan}";
+                $putUrl = "http://54.164.221.231:8009/notif/pesanan/{$id_pesanan}";
 
                 // Initialize cURL session
                 $chPut = curl_init();
@@ -596,7 +596,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
                     if ($putResult === null && json_last_error() !== JSON_ERROR_NONE) {
                         echo json_encode(['code' => 500, 'message' => 'Error decoding PUT response JSON']);
                     } else {
-                        $putUrl = "http://localhost:8000/Tpembayaran/pesanan/$id_pesanan/status/failed";
+                        $putUrl = "http://54.164.221.231:8009/Tpembayaran/pesanan/$id_pesanan/status/failed";
 
                         // Initialize cURL session
                         $chPut = curl_init();
@@ -628,7 +628,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['otp'])) {
                                 echo json_encode(['code' => 500, 'message' => 'Error decoding PUT response JSON']);
                             } else {
                                 //update status transaksi kartu failed
-                                $putUrl = "http://localhost:8000/kartu_kredit/transaksi/{$idTrans}/status/failed";
+                                $putUrl = "http://52.91.168.106:8009/kartu_kredit/transaksi/{$idTrans}/status/failed";
 
                                 // Initialize cURL session
                                 $chPut = curl_init();
