@@ -14,7 +14,6 @@ class GatewayService:
     # Get berdasarkan id_pesanan
     @http('GET', '/Tpembayaran/pesanan/<int:IDPesanan>')
     def get__byIDPesananTP(self, request, IDPesanan):
-        return "tes"
         exist = self.TransP_rpc.get_byIDPesanan(IDPesanan)
         if exist:
             return Response(json.dumps(exist), status=200, mimetype='application/json')
