@@ -1,5 +1,5 @@
 # Stage 1: Base Image
-FROM python:3.8-slim as base
+FROM python:3.8-slim AS base
 
 # Install necessary packages
 RUN apt-get update && \
