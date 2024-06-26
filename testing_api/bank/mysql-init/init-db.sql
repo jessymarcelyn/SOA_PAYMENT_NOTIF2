@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2024 at 08:43 PM
+-- Generation Time: Jun 26, 2024 at 12:44 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `bankbca` (
-  `id` int(11) NOT NULL,
+  `id` int(100) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `no_rek` varchar(255) NOT NULL,
   `pin` varchar(255) NOT NULL,
@@ -70,6 +70,7 @@ INSERT INTO `bankmandiri` (`id`, `nama`, `no_rek`, `pin`, `no_telp`, `saldo`) VA
 
 -- --------------------------------------------------------
 
+
 --
 -- Table structure for table `transbca`
 --
@@ -80,7 +81,7 @@ CREATE TABLE `transbca` (
   `no_telp` varchar(255) NOT NULL,
   `nominal` double NOT NULL,
   `status` varchar(25) NOT NULL,
-  `va` varchar(16) NOT NULL
+  `va` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -119,15 +120,16 @@ CREATE TABLE `transmandiri` (
 INSERT INTO `transmandiri` (`id_trans`, `timestamp_trans`, `no_telp`, `nominal`, `status`, `va`) VALUES
 (11, '2024-06-24 10:51:19', '081211366021', 500000, 'ongoing', 2147483647);
 
---
--- Indexes for dumped tables
+-- --------------------------------------------------------
+
 --
 
 --
 -- Indexes for table `bankbca`
 --
 ALTER TABLE `bankbca`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `no_rek` (`no_rek`);
 
 --
 -- Indexes for table `bankmandiri`
@@ -135,6 +137,9 @@ ALTER TABLE `bankbca`
 ALTER TABLE `bankmandiri`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `no_rek` (`no_rek`);
+
+--
+
 
 --
 -- Indexes for table `transbca`
@@ -156,13 +161,14 @@ ALTER TABLE `transmandiri`
 -- AUTO_INCREMENT for table `bankbca`
 --
 ALTER TABLE `bankbca`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `bankmandiri`
 --
 ALTER TABLE `bankmandiri`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 
 --
 -- AUTO_INCREMENT for table `transbca`
@@ -175,8 +181,5 @@ ALTER TABLE `transbca`
 --
 ALTER TABLE `transmandiri`
   MODIFY `id_trans` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
