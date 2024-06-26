@@ -22,7 +22,7 @@ RUN mkdir /var/nameko/ && chown -R nameko:nameko /var/nameko/
 # ------------------------------------------------------------------------
 
 # Stage 2: Builder Image
-FROM base as builder
+FROM base AS builder
 
 # Install build dependencies
 RUN apt-get update && \
