@@ -27,7 +27,7 @@ services:
       - rabbit
       - mysql
     ports:
-      - "8002:8000"
+      - "8003:8000"
     links:
       - "rabbit:nameko-example-rabbitmq"
       - "mysql:nameko-example-mysql"
@@ -48,7 +48,7 @@ services:
       - rabbit
       - mysql
     ports:
-      - "8003:8000"
+      - "8004:8000"
     links:
       - "rabbit:nameko-example-rabbitmq"
       - "mysql:nameko-example-mysql"
