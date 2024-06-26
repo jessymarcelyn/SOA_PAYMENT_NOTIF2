@@ -80,5 +80,5 @@ services:
       RABBIT_MANAGEMENT_PORT: "15672"
 
 volumes:
-  my_sql_data:
+  mysql_data:
     driver: local
