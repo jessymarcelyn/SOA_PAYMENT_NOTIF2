@@ -201,10 +201,12 @@ class Database(DependencyProvider):
                 pool_name="database_pool",
                 pool_size=10,
                 pool_reset_session=True,
-                host='localhost',
-                database='soa',
+                host='nameko-example-mysql',
+                port='3306',
+                database='soa_payment_notif',
                 user='root',
-                password=''
+                password='password'
+
             )
         except Error as e :
             print ("Error while connecting to MySQL using Connection pool ", e)
