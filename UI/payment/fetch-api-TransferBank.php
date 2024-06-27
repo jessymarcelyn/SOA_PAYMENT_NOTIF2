@@ -22,7 +22,7 @@ if (isset($_POST['bank']) && isset($_POST['id_pesanan'])) {
 
     if ($_POST['bank'] == 'BCA') {
 
-        $url = "http://54.164.221.231:8009/transBCA";
+        $url = "http://44.195.103.224:8009/transBCA";
         $postData = array(
             "no_telp" => $no_telp,
             "nominal" => $nominal
@@ -66,7 +66,7 @@ if (isset($_POST['bank']) && isset($_POST['id_pesanan'])) {
                     $putDataJson = json_encode($putData);
 
 
-                    $putUrl = "http://54.164.221.231:8009/Tpembayaran/pesanan/{$id_pesanan}";
+                    $putUrl = "http://44.195.103.224:8009/Tpembayaran/pesanan/{$id_pesanan}";
 
 
                     $chPut = curl_init();
@@ -97,7 +97,7 @@ if (isset($_POST['bank']) && isset($_POST['id_pesanan'])) {
                             if ($putResult == true) {
                                 $chPost = curl_init();
 
-                                curl_setopt($chPost, CURLOPT_URL, 'http://54.164.221.231:8009/notif');
+                                curl_setopt($chPost, CURLOPT_URL, 'http://44.195.103.224:8009/notif');
                                 curl_setopt($chPost, CURLOPT_POST, 1);
                                 curl_setopt($chPost, CURLOPT_RETURNTRANSFER, true);
                                 curl_setopt($chPost, CURLOPT_POSTFIELDS, json_encode(array(
@@ -108,7 +108,7 @@ if (isset($_POST['bank']) && isset($_POST['id_pesanan'])) {
                                     'deskripsi' => "Silahkan lakukan pembayaran untuk pesanan $id_pesanan dengan VA ini {$result['data']['va']}",
                                     'timestamp_masuk' => date('Y-m-d H:i:s'), // Current timestamp
                                     'status' => 0,
-                                    'link' => "../../inputVA.php"
+                                    'link' => "inputVA.php"
                                 )));
                                 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 
@@ -139,7 +139,7 @@ if (isset($_POST['bank']) && isset($_POST['id_pesanan'])) {
 
     if ($_POST['bank'] == 'Mandiri') {
 
-        $url = "http://54.164.221.231:8009/transMandiri";
+        $url = "http://44.195.103.224:8009/transMandiri";
         $postData = array(
             "no_telp" => $no_telp,
             "nominal" => $nominal
@@ -183,7 +183,7 @@ if (isset($_POST['bank']) && isset($_POST['id_pesanan'])) {
                     $putDataJson = json_encode($putData);
 
 
-                    $putUrl = "http://54.164.221.231:8009/Tpembayaran/pesanan/{$id_pesanan}";
+                    $putUrl = "http://44.195.103.224:8009/Tpembayaran/pesanan/{$id_pesanan}";
 
 
                     $chPut = curl_init();
@@ -214,7 +214,7 @@ if (isset($_POST['bank']) && isset($_POST['id_pesanan'])) {
                             if ($putResult == true) {
                                 $chPost = curl_init();
 
-                                curl_setopt($chPost, CURLOPT_URL, 'http://54.164.221.231:8009/notif');
+                                curl_setopt($chPost, CURLOPT_URL, 'http://44.195.103.224:8009/notif');
                                 curl_setopt($chPost, CURLOPT_POST, 1);
                                 curl_setopt($chPost, CURLOPT_RETURNTRANSFER, true);
                                 curl_setopt($chPost, CURLOPT_POSTFIELDS, json_encode(array(
@@ -225,7 +225,7 @@ if (isset($_POST['bank']) && isset($_POST['id_pesanan'])) {
                                     'deskripsi' => "Silahkan lakukan pembayaran untuk pesanan $id_pesanan dengan VA ini {$result['data']['va']}",
                                     'timestamp_masuk' => date('Y-m-d H:i:s'), // Current timestamp
                                     'status' => 0,
-                                    'link' => "../inputVA.php"
+                                    'link' => "inputVA.php"
                                 )));
                                 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 
@@ -267,7 +267,7 @@ else if (isset($_POST['id_pesanan'])) {
         $nominal = 200000;
 
         // URL endpoint API
-        $url = "http://54.164.221.231:8009/Tpembayaran";
+        $url = "http://44.195.103.224:8009/Tpembayaran";
 
         // Inisialisasi cURL
         $ch = curl_init();
@@ -312,7 +312,7 @@ else if (isset($_POST['id_pesanan'])) {
         $nominal = 100000;
 
         // URL endpoint API
-        $url = "http://54.164.221.231:8009/Tpembayaran";
+        $url = "http://44.195.103.224:8009/Tpembayaran";
 
         // Inisialisasi cURL
         $ch = curl_init();
