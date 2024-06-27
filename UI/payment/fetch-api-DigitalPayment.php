@@ -48,7 +48,7 @@ function checkNumber($number, $provider, $nominal)
     );
 
     
-    $url = "http://100.25.221.98:8009/" . $provider;
+    $url = "http://44.195.103.224:8009/" . $provider;
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url); // Set URL tujuan
