@@ -18,7 +18,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['nama']) && isset($_POST['nomer_
     $cvv = htmlspecialchars($_POST['cvv']);
     $nominal = htmlspecialchars($_POST['nominal']);
 
-    $url = "http://52.91.168.106:8009/kartu_kredit/{$nomer_kartu}/cvv/{$cvv}/nama/{$nama}/expired_month/{$expired_month}/expired_year/{$expired_year}/nominal/{$nominal}";
+    $url = "http://44.195.103.224:8009/kartu_kredit/{$nomer_kartu}/cvv/{$cvv}/nama/{$nama}/expired_month/{$expired_month}/expired_year/{$expired_year}/nominal/{$nominal}";
 
     $ch = curl_init();
 
@@ -52,7 +52,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['nama']) && isset($_POST['nomer_
                 $putDataJson = json_encode($putData);
 
 
-                $putUrl = "http://54.164.221.231:8009/Tpembayaran/pesanan/{$id_pesanan}";
+                $putUrl = "http://44.195.103.224:8009/Tpembayaran/pesanan/{$id_pesanan}";
 
 
                 $chPut = curl_init();
@@ -84,7 +84,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['nama']) && isset($_POST['nomer_
                         if ($putResult == true) {
                             $chPost = curl_init();
 
-                            curl_setopt($chPost, CURLOPT_URL, 'http://54.164.221.231:8009/notif');
+                            curl_setopt($chPost, CURLOPT_URL, 'http://44.195.103.224:8009/notif');
                             curl_setopt($chPost, CURLOPT_POST, 1);
                             curl_setopt($chPost, CURLOPT_RETURNTRANSFER, true);
                             curl_setopt($chPost, CURLOPT_POSTFIELDS, json_encode(array(
@@ -115,7 +115,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['nama']) && isset($_POST['nomer_
                                     if ($postResult['data'] == true) {
                                         $chPost = curl_init();
 
-                                        curl_setopt($chPost, CURLOPT_URL, 'http://54.164.221.231:8009/notif');
+                                        curl_setopt($chPost, CURLOPT_URL, 'http://44.195.103.224:8009/notif');
                                         curl_setopt($chPost, CURLOPT_POST, 1);
                                         curl_setopt($chPost, CURLOPT_RETURNTRANSFER, true);
                                         curl_setopt($chPost, CURLOPT_POSTFIELDS, json_encode(array(
@@ -165,7 +165,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['nama']) && isset($_POST['nomer_
     $nominal = 200000;
 
     // URL endpoint API
-    $url = "http://54.164.221.231:8009/Tpembayaran";
+    $url = "http://44.195.103.224:8009/Tpembayaran";
 
     // Initialize cURL
     $ch = curl_init();
@@ -209,7 +209,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['nama']) && isset($_POST['nomer_
     $nominal = 100000;
 
     // URL endpoint API
-    $url = "http://54.164.221.231:8009/Tpembayaran";
+    $url = "http://44.195.103.224:8009/Tpembayaran";
 
     // Initialize cURL
     $ch = curl_init();

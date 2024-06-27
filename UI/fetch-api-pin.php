@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 
 function update_status_idpesanan($status, $id_pesanan)
 {
-    $putUrl = "http://54.164.221.231:8009/Tpembayaran/pesanan/$id_pesanan/status/$status";
+    $putUrl = "http://44.195.103.224:8009/Tpembayaran/pesanan/$id_pesanan/status/$status";
 
     // Initialize cURL session
     $chPut = curl_init();
@@ -37,7 +37,7 @@ function post_notif($id_pesanan)
 {
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL, 'http://54.164.221.231:8009/notif');
+    curl_setopt($ch, CURLOPT_URL, 'http://44.195.103.224:8009/notif');
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt(
@@ -73,7 +73,7 @@ function post_notif($id_pesanan)
 
 function getIDTransaksi_NamaPenyedia($id_pesanan)
 {
-    $url = "http://54.164.221.231:8009/Tpembayaran/pesanan/" . $id_pesanan;
+    $url = "http://44.195.103.224:8009/Tpembayaran/pesanan/" . $id_pesanan;
 
     // Inisialisasi cURL
     $ch = curl_init();
@@ -176,7 +176,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['pin'])) {
         );
 
         // URL endpoint API
-        $url = "http://100.25.221.98:8009/" . $nama_penyedia . "/pembayaran";
+        $url = "http://44.195.103.224:8009/" . $nama_penyedia . "/pembayaran";
 
         $ch = curl_init();
 
@@ -211,7 +211,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['pin'])) {
 
             $putEricDataJson = json_encode($putNoputEricDatatifData);
 
-            $urlEric =  " http://3.226.141.243:8004/{$id_pesanan}";
+            $urlEric =  " http://44.195.103.224:8009/{$id_pesanan}";
 
             $chEric = curl_init();
             // Set cURL options
