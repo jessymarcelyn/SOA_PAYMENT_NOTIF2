@@ -211,7 +211,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['pin'])) {
 
             $putEricDataJson = json_encode($putNoputEricDatatifData);
 
-            $urlEric =  "http://52.91.168.106:8009/kartu_kredit/transaksi/{$idTrans}/status/failed";
+            $urlEric =  " http://3.226.141.243:8004/{$id_pesanan}";
 
             $chEric = curl_init();
             // Set cURL options
