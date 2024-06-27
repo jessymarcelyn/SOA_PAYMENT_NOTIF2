@@ -8,7 +8,7 @@ function post_notif($id_pesanan)
 {
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL, 'http://54.164.221.231:8009/notif');
+    curl_setopt($ch, CURLOPT_URL, 'http://44.195.103.224:8009/notif');
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt(
@@ -48,7 +48,7 @@ function checkNumber($number, $provider, $nominal)
     );
 
     
-    $url = "http://100.25.221.98:8009/" . $provider;
+    $url = "http://44.195.103.224:8009/" . $provider;
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url); // Set URL tujuan
@@ -93,7 +93,7 @@ if (isset($_POST['id_pesanan']) && isset($_POST['method']) && isset($_POST['prov
             'status' => 'ongoing'
         );
 
-        $url = "http://54.164.221.231:8009/Tpembayaran/pesanan/" . $id_pesanan;
+        $url = "http://44.195.103.224:8009/Tpembayaran/pesanan/" . $id_pesanan;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
